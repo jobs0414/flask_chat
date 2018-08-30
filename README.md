@@ -7,3 +7,38 @@
 - 이거 마크다운 볼라면 파일 선택후 preview 클릭 
 
 ### c9 개발 
+
+
+- -우측 상단의 톱니바퀴에 들어가서 python3로 설정변경 
+- 'sudo pip3 install flask' 플라스크 설치 
+ 
+
+### keyboard
+
+```python3
+import os
+import json
+from flask import Flask
+
+app=Flask(__name__)
+
+@app.route('/')
+def hello(): 
+    return '챗봇 페이지 입니다!!!!'
+    
+@app.route('/keyboard')
+def keyboard(): 
+    keyboard= {
+       "type" : "buttons",
+       "buttons" : ["메뉴", "로또", "고양이","영화"]
+    }
+    json_keyboard= json.dumps(keyboard)
+    return json_keyboard
+
+
+app.run(host=os.getenv('IP', '0.0.0.0'),port=int(os.getenv('PORT', 8080)))
+'''
+
+
+
+
