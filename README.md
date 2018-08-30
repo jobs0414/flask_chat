@@ -1,18 +1,9 @@
+# 파이썬 챗봇 만들기!!!
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+### 카카오톡 플러스친구 관리자센터 
 
+- 플러스 친구 생성후 공개설정 (공개 안되면 검색이 되지 않음!) 
+- 왼쪽 스마트 챗팅 API형 사용 
+- 이거 마크다운 볼라면 파일 선택후 preview 클릭 
 
-Hi there! Welcome to Cloud9 IDE!
-
-To get you started, create some files, play with the terminal,
-or visit http://docs.c9.io for our documentation.
-If you want, you can also go watch some training videos at
-http://www.youtube.com/user/c9ide.
-
-Happy coding!
-The Cloud9 IDE team
+### c9 개발 
