@@ -5,6 +5,8 @@ import random
 import requests
 from flask import Flask, request, jsonify
 from bs4 import BeautifulSoup
+import scrapy
+
 
 app = Flask(__name__)
 
@@ -19,7 +21,7 @@ def keyboard():
     keyboard = {
       "type" : "buttons",
 
-      "buttons" : ["메뉴", "로또", "고양이", "영화","강아지"]
+      "buttons" : ['로또', "영화", "메뉴", "고양이","강아지","날씨","증권","웹툰"]
 
     #딕셔너리를 json으로 바꿔서 리턴 해주기 위한 코드
     json_keyboard = json.dumps(keyboard)
@@ -32,34 +34,40 @@ def message():
     # content라는 key의 value를 msg에 저장
     msg = request.json['content']
     img_bool = False
-    if msg == "메뉴":
+    # if msg == "메뉴":
+    #     for i in range(menu)
+    #     menu = ['']
 
-        menu = ["도미노피자", "멀캠식당", "홍콩반점", "백반","돈까스","기타","굶자","순두부찌개"]
-
-        return_msg = random.choice(menu)
-    elif msg == "로또":
-        # 1~45 리스트
-        numbers = list(range(1,46))
-        # 6개 샘플링
-        pick = random.sample(numbers, 6)
-        # 정렬 후 스트링으로 변환 하여 저장
-        return_msg = str(sorted(pick))
+    #     return_msg = random.choice(menu)
+    # elif msg == "로또":
+    #     # 1~45 리스트 
+    #     numbers1 = list(range(1,46))
+    #     numbers2 = list(range(1,46))
+    #     numbers3 = list(range(1,46))
+    #     # 6개 샘플링
+    #     pick = random.sample(numbers1, 6)
+    #     pick2 = random.sample(numbers2, 6)
+    #     pick3 = random.sample(numbers3, 6)
+    #     # 정렬 후 스트링으로 변환 하여 저장
+    #     return_msg = str(sorted(pick))
+    #     return_msg2 = str(sorted(pick2))
+    #     return_msg3 = str(sorted(pick3))
 
    
-    elif msg == "고양이":
-        img_bool = True
-        url = "https://api.thecatapi.com/v1/images/search?mime_types=image/gif"
-        req = requests.get(url).json()
-        return_msg = "나만 고양이 없어 :("
-        img_url = req[0]['url']
+    # elif msg == "고양이":
+    #     img_bool = True
+    #     url = "https://api.thecatapi.com/v1/images/search?mime_types=image/gif"
+    #     req = requests.get(url).json()
+    #     return_msg = "나만 고양이 없어 :("
+    #     img_url = req[0]['url']
  
  
-    elif msg == "강아지":
-        img_bool = True
-        url = "https://dog.ceo/api/breeds/image/random"
-        req = requests.get(url).json()
-        return_msg = "나만 강아지 없어 :("
-        img_url = req['message']
+    # elif msg == "강아지":
+    #     img_bool = True
+    #     url = "https://dog.ceo/api/breeds/image/random"
+    #     req = requests.get(url).json()
+    #     return_msg = "나만 강아지 없어 :("
+    #     img_url = req['message']
    
  
     elif msg == "영화":
@@ -73,6 +81,8 @@ def message():
         star_tag = doc.select('div.star_t1 > a > span.num')
         reserve_tag = doc.select('div.star_t1.b_star > span.num')
         img_tag = doc.select('div.thumb > a > img')
+
+
         
         movie_dic = {}
         for i in range(0,10):
@@ -83,10 +93,11 @@ def message():
                 "img":img_tag[i].get('src')
             }
             
-        pick_movie = movie_dic[random.randrange(0,10)]
+        # pick_movie = movie_dic[random.randrange(0,10)]
         
-        return_msg = "%s/평점:%s/예매율:%s" % (pick_movie['title'],pick_movie['star'],pick_movie['reserve'])
-        img_url = pick_movie['img']
+        return_msg = "%s/평점:%s/예매율:%s" % (movie_dic['title'],movie_dic['star'],movie_dic['reserve'])
+        img_url = movie_dic['img']
+ 
     else:
         return_msg = "현재 메뉴만 지원합니다 :)"
     
@@ -97,13 +108,13 @@ def message():
                 "photo": {
                     "url": img_url,
                     "width":720,
-                    "height":640
+                    "height":600
                 }
             },
             "keyboard": {
               "type" : "buttons",
 
-              "buttons" : ["메뉴","로또", "고양이","강아지", "영화"]
+              "buttons" : ['로또', "영화", "메뉴", "고양이","강아지","날씨","증권","웹툰"]
 
             }
         }
@@ -115,7 +126,7 @@ def message():
             "keyboard": {
               "type" : "buttons",
 
-              "buttons" : ["메뉴","로또", "고양이","강아지", "영화"]
+              "buttons" : ['로또', "영화", "메뉴", "고양이","강아지","날씨","증권","웹툰"]
 
             
             }
