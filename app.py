@@ -18,17 +18,14 @@ def keyboard():
     #keyboard 딕셔너리 생성
     keyboard = {
       "type" : "buttons",
-<<<<<<< HEAD
+
       "buttons" : ["메뉴", "로또", "고양이", "영화","강아지"]
-=======
-      "buttons" : ["메뉴", "로또", "고양이", "영화"]
->>>>>>> eb6352931555ab0e8aa41535f115caa82c000bbb
-    }
-    
+
     #딕셔너리를 json으로 바꿔서 리턴 해주기 위한 코드
     json_keyboard = json.dumps(keyboard)
     return json_keyboard
     
+
 @app.route('/message', methods=['POST'])
 def message():
     
@@ -36,11 +33,9 @@ def message():
     msg = request.json['content']
     img_bool = False
     if msg == "메뉴":
-<<<<<<< HEAD
+
         menu = ["도미노피자", "멀캠식당", "홍콩반점", "백반","돈까스","기타","굶자","순두부찌개"]
-=======
-        menu = ["20층", "멀캠식당", "꼭대기", "급식"]
->>>>>>> eb6352931555ab0e8aa41535f115caa82c000bbb
+
         return_msg = random.choice(menu)
     elif msg == "로또":
         # 1~45 리스트
@@ -49,7 +44,7 @@ def message():
         pick = random.sample(numbers, 6)
         # 정렬 후 스트링으로 변환 하여 저장
         return_msg = str(sorted(pick))
-<<<<<<< HEAD
+
    
     elif msg == "고양이":
         img_bool = True
@@ -67,14 +62,6 @@ def message():
         img_url = req['message']
    
  
-=======
-    elif msg == "고양이":
-        img_bool = True
-        url = "https://api.thecatapi.com/v1/images/search?mime_types=jpg"
-        req = requests.get(url).json()
-        return_msg = "나만 고양이 없어 :("
-        img_url = req[0]['url']
->>>>>>> eb6352931555ab0e8aa41535f115caa82c000bbb
     elif msg == "영화":
         img_bool = True
         url = "https://movie.naver.com/movie/running/current.nhn"
@@ -115,11 +102,9 @@ def message():
             },
             "keyboard": {
               "type" : "buttons",
-<<<<<<< HEAD
+
               "buttons" : ["메뉴","로또", "고양이","강아지", "영화"]
-=======
-              "buttons" : ["메뉴","로또", "고양이", "영화"]
->>>>>>> eb6352931555ab0e8aa41535f115caa82c000bbb
+
             }
         }
     else:
@@ -129,11 +114,10 @@ def message():
             },
             "keyboard": {
               "type" : "buttons",
-<<<<<<< HEAD
+
               "buttons" : ["메뉴","로또", "고양이","강아지", "영화"]
-=======
-              "buttons" : ["메뉴","로또", "고양이", "영화"]
->>>>>>> eb6352931555ab0e8aa41535f115caa82c000bbb
+
+            
             }
         }
         
