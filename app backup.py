@@ -1,12 +1,9 @@
 import os
-#json으로 바꾸기 위해 라이브러리 추가
 import json
 import random
 import requests
 from flask import Flask, request, jsonify
 from bs4 import BeautifulSoup
-import scrapy
-
 
 app = Flask(__name__)
 
@@ -21,13 +18,16 @@ def keyboard():
     keyboard = {
       "type" : "buttons",
 
-      "buttons" : ['로또', "영화", "메뉴", "고양이","강아지"]
+      "buttons" : ["메뉴", "로또", "고양이", "영화","강아지"]
 
+     
+
+    }
+    
     #딕셔너리를 json으로 바꿔서 리턴 해주기 위한 코드
     json_keyboard = json.dumps(keyboard)
     return json_keyboard
     
-
 @app.route('/message', methods=['POST'])
 def message():
     
@@ -35,23 +35,19 @@ def message():
     msg = request.json['content']
     img_bool = False
     if msg == "메뉴":
-        for i in range(menu)
-        menu = ['']
+
+        menu = ["도미노피자", "멀캠식당", "홍콩반점", "백반","돈까스","기타","굶자","순두부찌개"]
+
+       
 
         return_msg = random.choice(menu)
     elif msg == "로또":
-        # 1~45 리스트 
-        numbers1 = list(range(1,46))
-        numbers2 = list(range(1,46))
-        numbers3 = list(range(1,46))
+        # 1~45 리스트
+        numbers = list(range(1,46))
         # 6개 샘플링
-        pick = random.sample(numbers1, 6)
-        pick2 = random.sample(numbers2, 6)
-        pick3 = random.sample(numbers3, 6)
+        pick = random.sample(numbers, 6)
         # 정렬 후 스트링으로 변환 하여 저장
         return_msg = str(sorted(pick))
-        return_msg2 = str(sorted(pick2))
-        return_msg3 = str(sorted(pick3))
 
    
     elif msg == "고양이":
@@ -69,7 +65,8 @@ def message():
         return_msg = "나만 강아지 없어 :("
         img_url = req['message']
    
- 
+
+
     elif msg == "영화":
         img_bool = True
         url = "https://movie.naver.com/movie/running/current.nhn"
@@ -113,6 +110,7 @@ def message():
 
               "buttons" : ["메뉴","로또", "고양이","강아지", "영화"]
 
+        
             }
         }
     else:
