@@ -21,7 +21,7 @@ def keyboard():
     keyboard = {
       "type" : "buttons",
 
-      "buttons" : ['로또', "영화", "메뉴", "고양이","강아지","날씨","웹툰"]
+      "buttons" : ['로또', "영화", "메뉴", "고양이","강아지"]
 
     #딕셔너리를 json으로 바꿔서 리턴 해주기 위한 코드
     json_keyboard = json.dumps(keyboard)
