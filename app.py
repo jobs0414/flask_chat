@@ -34,12 +34,16 @@ def message():
     # content라는 key의 value를 msg에 저장
     msg = request.json['content']
     img_bool = False
-    # if msg == "메뉴":
-    #     for i in range(menu)
-    #     menu = ['']
+    if msg == "점심메뉴":
+    
+        menu = ['버거킹','돈까스','중국집','한식','일식','백반정식','굶자','스파게티','김밥천국','구내식당','편의점','서브웨이']
 
-    #     return_msg = random.choice(menu)
-    # elif msg == "로또":
+    elif msg == "회식메뉴"
+
+        menu = ['삼겹살+소맥','곱창집','비어맥주','']
+
+        return_msg = random.choice(menu)
+    elif msg == "로또":
     #     # 1~45 리스트 
     #     numbers1 = list(range(1,46))
     #     numbers2 = list(range(1,46))
